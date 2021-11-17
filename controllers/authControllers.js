@@ -1,5 +1,5 @@
 import User from "../models/Users.js";
-import ErrorResponse from "../utils/ErrorResponse.js";
+import ErrorResponse from "../utils/errorResponse.js";
 import sendEmail from "../utils/sendEmail.js";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
