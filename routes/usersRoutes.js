@@ -12,9 +12,9 @@ const router = express.Router();
 
 router.get("/", authenticate, adminOnly, getAllUsers);
 
-router.get("/:id", authenticate, getUserById);
+router.get("/:id", getUserById);
 
-router.post("/:id", deleteUser);
+router.post("/:id", authenticate, adminOnly, deleteUser);
 
 router.put("/:user/favorites/:id", addToFavorites);
 

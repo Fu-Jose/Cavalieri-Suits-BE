@@ -12,7 +12,9 @@ export const getAllUsers = async (req, res) => {
 
 export const getUserById = async (req, res) => {
   try {
-    const user = await Users.findById(req.params.id);
+    const user = await Users.findById(req.params.id)
+      .select("-__v")
+      .select("-refreshToken");
     res.json(user);
   } catch (error) {
     res.status(500).json({ message: "Server Error" });
