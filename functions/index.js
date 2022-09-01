@@ -1,3 +1,5 @@
+const functions = require("firebase-functions");
+
 import express from "express";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
@@ -62,3 +64,5 @@ app.use("/api/config/paypal", (req, res) => {
 });
 
 console.table(listEndpoints(app));
+
+exports.app = functions.https.onRequest(app)
