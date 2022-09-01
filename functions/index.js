@@ -1,4 +1,4 @@
-const functions = require("firebase-functions");
+import {functions} from "firebase-functions";
 
 import express from "express";
 import connectDB from "./config/db.js";
