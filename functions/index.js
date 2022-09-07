@@ -1,4 +1,4 @@
-import {functions} from "firebase-functions";
+import { https } from "firebase-functions";
 
 import express from "express";
 import connectDB from "./config/db.js";
@@ -39,10 +39,12 @@ app.use(express.json());
 // ERRORHANDLER ALWAYS LAST
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5001;
-const server = app.listen(PORT, () =>
-  console.log(`Server online on PORT ${PORT}`)
-);
+// const PORTA = process.env.PORTA || 5001;
+// const server = app.listen(PORTA, () =>
+//   console.log(`Server online on PORTA ${PORTA}`)
+// );
+
+const server = app.listen()
 
 process.on("unhandledRejection", (err, promise) => {
   console.log(`Logged Error: ${err}`);
@@ -63,6 +65,7 @@ app.use("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
 
-console.table(listEndpoints(app));
 
-exports.app = functions.https.onRequest(app)
+https.onRequest(app)
+
+console.table(listEndpoints(app));
